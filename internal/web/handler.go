@@ -114,7 +114,7 @@ func (h *BookHandlers) UpdateBook(w http.ResponseWriter, r *http.Request) {
 
 	book.ID = id
 
-	if err := h.service.UpdateBook(book); err != nil {
+	if err := h.service.UpdateBook(&book); err != nil {
 		http.Error(w, "failed to update boook", http.StatusInternalServerError)
 		return
 	}
