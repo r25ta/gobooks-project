@@ -4,3 +4,7 @@ CREATE TABLE IF NOT EXISTS books (
     author varchar(255) NOT NULL,
     genre varchar(255) NOT NULL
 );
+
+
+--first record
+insert into books(title, author, genre) values('MAD','Alfred Newman','Comedy');

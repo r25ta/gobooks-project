@@ -19,7 +19,7 @@ func NewBoolHandlers(service *service.BookService) *BookHandlers {
 func (h *BookHandlers) GetBooks(w http.ResponseWriter, r *http.Request) {
 	books, err := h.service.GetBooks()
 	if err != nil {
-		http.Error(w, "failed to get books", http.StatusInternalServerError)
+		http.Error(w, "failed to get books"+err.Error(), http.StatusInternalServerError)
 		return
 	}
 
@@ -115,7 +115,7 @@ func (h *BookHandlers) UpdateBook(w http.ResponseWriter, r *http.Request) {
 	book.ID = id
 
 	if err := h.service.UpdateBook(&book); err != nil {
-		http.Error(w, "failed to update boook", http.StatusInternalServerError)
+		http.Error(w, "failed to update book", http.StatusInternalServerError)
 		return
 	}
 

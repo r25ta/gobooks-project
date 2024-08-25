@@ -78,7 +78,7 @@ func (s *BookService) GetBookByID(id int) (*Book, error) {
 }
 
 func (s *BookService) UpdateBook(book *Book) error {
-	query := "UPDATE book SET title=?, author=?, genre=? WHERE id=?"
+	query := "UPDATE books SET title=?, author=?, genre=? WHERE id=?"
 	_, err := s.db.Exec(query, book.Title, book.Author, book.Genre, book.ID)
 
 	/*CASO ERR = NIL UPDATE OK SENÃO UPDATE NOK*/
@@ -86,7 +86,7 @@ func (s *BookService) UpdateBook(book *Book) error {
 }
 
 func (s *BookService) DeleteBook(id int) error {
-	query := "DELETE FROM book WHERE id = ?"
+	query := "DELETE FROM books WHERE id = ?"
 
 	_, err := s.db.Exec(query, id)
 

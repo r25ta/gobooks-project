@@ -23,7 +23,7 @@ func main() {
 	bookService := service.NewBookService(db)
 	bookHandlers := web.NewBoolHandlers(bookService)
 
-	//inicializar servidor WEB
+	//Criando servidor WEB
 	router := http.NewServeMux()
 
 	router.HandleFunc("GET /books", bookHandlers.GetBooks)
@@ -32,5 +32,7 @@ func main() {
 	router.HandleFunc("PUT /books/{id}", bookHandlers.UpdateBook)
 	router.HandleFunc("DELETE /books/{id}", bookHandlers.DeleteBook)
 
-	http.ListenAndServe("8080", router)
+	// Iniciando o servidor
+	log.Println("Server is running on port 8080...")
+	log.Fatal(http.ListenAndServe(":8080", router))
 }
