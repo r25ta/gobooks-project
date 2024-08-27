@@ -7,11 +7,13 @@ import (
 	"log"
 	"net/http"
 
-	_ "github.com/mattn/go-sqlite3"
+	_ "github.com/lib/pq"
+	// _ "github.com/mattn/go-sqlite3"
 )
 
 func main() {
-	db, err := sql.Open("sqlite3", "./books.db")
+	//	db, err := sql.Open("sqlite3", "./books.db")
+	db, err := sql.Open("postgres", "postgresql://postgres:admin@my_postgres:5432/sandboxdb?sslmode=disable")
 
 	if err != nil {
 		log.Fatalf("failed to connect to the database: %v", err)
