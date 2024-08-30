@@ -12,8 +12,10 @@ import (
 )
 
 func main() {
+	dsn := "host=localhost port=5432 user=admin password=root dbname=postgresdb sslmode=disable"
+	//"container_postgres://admin:root@books:5432/postgresdb?sslmode=disable"
 	//	db, err := sql.Open("sqlite3", "./books.db")
-	db, err := sql.Open("postgres", "postgresql://postgres:admin@my_postgres:5432/sandboxdb?sslmode=disable")
+	db, err := sql.Open("postgres", dsn)
 
 	if err != nil {
 		log.Fatalf("failed to connect to the database: %v", err)
